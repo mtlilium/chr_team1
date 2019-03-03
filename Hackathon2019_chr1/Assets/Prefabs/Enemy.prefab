@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4861927008598922}
   - component: {fileID: 212717346693081088}
   - component: {fileID: 61800049668650592}
+  - component: {fileID: 70344306815413808}
   m_Layer: 0
   m_Name: Character Sprite
   m_TagString: Enemy
@@ -210,7 +211,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1574233816524344}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -229,6 +230,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!70 &70344306815413808
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1574233816524344}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!114 &114228089482322384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,6 +262,7 @@ MonoBehaviour:
   sprite: {fileID: 212822688180226530}
   direction: 0
   rayDistance: 1
+  score: 0
 --- !u!212 &212717346693081088
 SpriteRenderer:
   m_ObjectHideFlags: 1
