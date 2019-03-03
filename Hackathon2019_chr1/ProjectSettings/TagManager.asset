@@ -17,8 +17,8 @@ TagManager:
   - 
   - PostProcessing
   - 
-  - 
-  - 
+  - Back
+  - Front
   - 
   - 
   - 
@@ -42,4 +42,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Back
+    uniqueID: 3123751155
+    locked: 0
+  - name: Front
+    uniqueID: 830552303
     locked: 0
