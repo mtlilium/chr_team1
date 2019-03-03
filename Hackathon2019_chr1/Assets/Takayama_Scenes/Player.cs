@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 	float stateEffect = 1;       // 状態に応じて横移動速度を変えるための係数
 
 	private float HP; //モチベ。
+	private int score; //スコア
 	private GameObject image;
 
 	Rigidbody2D rb2;
@@ -30,6 +31,7 @@ public class Player : MonoBehaviour {
 		key = 0;  
 		rb2 = this.GetComponent<Rigidbody2D> ();
 		HP = 100; //初期化
+		score = 0;
 		image = GameObject.Find("ImagePlayer");
 	}
 	
@@ -103,6 +105,7 @@ public class Player : MonoBehaviour {
 
 	}
 
+	//HP何をせずとも減っていって、0になるとゲームオーバー
 	void HP_Manage(){
 		HP -= 0.1f;
 		if (HP <= 0) {
@@ -111,10 +114,22 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	//HP情報の取得
 	public float GetHP(){
 		return HP;
 	}
 
+	//HP回復
+	public void Heal_HP(int point){
+		HP += point;
+		if (HP >= 100) {
+			HP = 100;
+		}
+	}
+	//スコア追加
+	public void Add_Score(int add){
+		score += add;
+	}
 	//着地判定
 	void OnCollisionEnter2D(Collision2D col){
 		print ("入ったよ");

@@ -965,6 +965,7 @@ GameObject:
   - component: {fileID: 972021150}
   - component: {fileID: 972021152}
   - component: {fileID: 972021151}
+  - component: {fileID: 972021153}
   m_Layer: 0
   m_Name: HP_Show
   m_TagString: Untagged
@@ -1030,6 +1031,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 972021149}
   m_CullTransparentMesh: 0
+--- !u!114 &972021153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972021149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7baa65954c17fa848aac1e5f5f84f6c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1345808610
 GameObject:
   m_ObjectHideFlags: 0
