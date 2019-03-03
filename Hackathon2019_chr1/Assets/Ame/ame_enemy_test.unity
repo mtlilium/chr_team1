@@ -464,12 +464,12 @@ GameObject:
   - component: {fileID: 1318411242}
   - component: {fileID: 1318411241}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1318411241
 Rigidbody2D:
   serializedVersion: 4
@@ -568,7 +568,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1318411240}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.66, y: 4.24, z: 0}
+  m_LocalPosition: {x: -2.77, y: 12.88, z: 0}
   m_LocalScale: {x: 0.968, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -886,11 +886,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613705707141030, guid: c04c88f87649cb044903e4ac53d4c396, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4613705707141030, guid: c04c88f87649cb044903e4ac53d4c396, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5.57
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4613705707141030, guid: c04c88f87649cb044903e4ac53d4c396, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1029,11 +1029,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4764193777234584, guid: 6d3b69b47775f2548a273591a7cea607, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4764193777234584, guid: 6d3b69b47775f2548a273591a7cea607, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.79
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4764193777234584, guid: 6d3b69b47775f2548a273591a7cea607, type: 2}
       propertyPath: m_LocalPosition.z
