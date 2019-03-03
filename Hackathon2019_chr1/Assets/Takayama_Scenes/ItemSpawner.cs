@@ -10,6 +10,7 @@ public class ItemSpawner : MonoBehaviour {
 	public GameObject coinPrefab;
 	public GameObject redCoinPrefab;
 	public GameObject yuriPrefab;
+	public GameObject sushiPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +23,19 @@ public class ItemSpawner : MonoBehaviour {
 				hit.point = new Vector2 (hit.point.x, hit.point.y + 1);
 				if (hit.collider != null) {
 					GameObject obj = Instantiate (yuriPrefab, hit.point, transform.rotation);
+					obj.transform.parent = transform;
+				}
+			}
+		}
+		//寿司の生成
+		for (int i = 1; i <= 15; i++) {
+			int tmp = (int)UnityEngine.Random.Range (10, 40);
+			if (tmp >= 20) {
+				Vector3 offset = new Vector3 (UnityEngine.Random.Range (30, 45) * i, 0.0f, 0.0f);
+				RaycastHit2D hit = Physics2D.Raycast (transform.position + offset, -Vector2.up);
+				hit.point = new Vector2 (hit.point.x, hit.point.y + 1);
+				if (hit.collider != null) {
+					GameObject obj = Instantiate (sushiPrefab, hit.point, transform.rotation);
 					obj.transform.parent = transform;
 				}
 			}

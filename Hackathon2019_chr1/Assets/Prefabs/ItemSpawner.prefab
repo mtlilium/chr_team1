@@ -55,3 +55,5 @@ MonoBehaviour:
   redCoinPrefab: {fileID: 1159523345892812, guid: 24f4f37202815384abe55bd024367e2e,
     type: 2}
   yuriPrefab: {fileID: 1247572737879356, guid: 53c8bd449ba864a45878fa7f7c7d6b32, type: 2}
+  sushiPrefab: {fileID: 1401954956749198, guid: e63b7d7f30b3d454d98e2f0c92462cc0,
+    type: 2}
