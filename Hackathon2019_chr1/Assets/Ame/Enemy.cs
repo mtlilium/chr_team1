@@ -13,7 +13,6 @@ public class Enemy : MonoBehaviour
 
     public float direction;
     public float rayDistance = 1;
-    public Vector2 rayStartOffset = new Vector2(0, -1);
 
     private void Awake()
     {
@@ -30,8 +29,8 @@ public class Enemy : MonoBehaviour
             Kill();
         }
 
-        var hits = Physics2D.RaycastAll(transform.position + new Vector3(rayStartOffset.x, rayStartOffset.y, 0), new Vector2(direction, 0), distance: rayDistance);
-        Debug.DrawRay(transform.position + new Vector3(rayStartOffset.x, rayStartOffset.y, 0), new Vector2(direction, 0) * rayDistance, Color.red);
+        var hits = Physics2D.RaycastAll(transform.position, new Vector2(direction, 0), distance: rayDistance);
+        Debug.DrawRay(transform.position, new Vector2(direction, 0) * rayDistance, Color.red);
         if (hits.Length != 0)
         {
             foreach (var hit in hits)
@@ -48,14 +47,6 @@ public class Enemy : MonoBehaviour
             //print(hit2d.collider.tag);
             //print(hit2d.collider.name);
         }
-
-        ////回転を制限
-        //var lrot = transform.rotation;
-        //lrot.z = 0;
-        //transform.rotation = lrot;
-
-        //r2d.
-        //r2d.rotation = 0;
     }
 
     private void FixedUpdate()
@@ -115,6 +106,8 @@ public class Enemy : MonoBehaviour
             {
                 Kill();
             }
+            //そのまま当たった時
+            //プレイヤー倒す
         }
     }
 }
