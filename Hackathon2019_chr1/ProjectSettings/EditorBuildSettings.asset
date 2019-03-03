@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/MainScenes/TitleScene.unity
+    guid: 481cfd2e090dc5543a888473cc33c73f
+  - enabled: 1
+    path: Assets/MainScenes/GameScene_kari.unity
+    guid: f96074ec43a295144911aac149eee305
+  - enabled: 1
+    path: Assets/MainScenes/ResultScene.unity
+    guid: 48af4f803105fb44d894fa68ed4eac0a
   m_configObjects: {}

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
 	string prevState;            // 前の状態を保存
 	float stateEffect = 1;       // 状態に応じて横移動速度を変えるための係数
 
-	public float HP; //モチベ。
+	private float HP; //モチベ。
 	private int score; //スコア
 	private GameObject image;
 
@@ -92,6 +92,10 @@ public class Player : MonoBehaviour {
 		// 設置している時にSpaceキー押下でジャンプ
 		if (isGround) {
 			if (Input.GetKeyDown (KeyCode.Space)) {
+				//ジャンプ音
+				//AudioManager.Instance.PlaySE("UEI");
+				//ジャンプするのは疲れるので
+				HP -= 3.0f;
 				rb2.AddForce (transform.up * this.jumpForce);
 				isGround = false;
 			}
@@ -110,7 +114,7 @@ public class Player : MonoBehaviour {
 
 	//HP何をせずとも減っていって、0になるとゲームオーバー
 	void HP_Manage(){
-		HP -= 0.1f;
+		HP -= 0.05f;
 		if (HP <= 0) {
 			HP = 0;
 			//Destroy (this.gameObject);
@@ -129,10 +133,16 @@ public class Player : MonoBehaviour {
 			HP = 100;
 		}
 	}
+
 	//スコア追加
 	public void Add_Score(int add){
 		score += add;
 	}
+	//score情報取得
+	public int GetScore(){
+		return score;
+	}
+
 	//着地判定
 	void OnCollisionEnter2D(Collision2D col){
 		//print ("入ったよ");

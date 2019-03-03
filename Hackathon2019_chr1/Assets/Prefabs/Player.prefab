@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4291349896596530}
   - component: {fileID: 20643756175917298}
-  - component: {fileID: 81089884393249392}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -178,13 +177,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.017883062}
   serializedVersion: 2
   m_Radius: 0.9649651
---- !u!81 &81089884393249392
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1726547595637612}
-  m_Enabled: 1
 --- !u!114 &114893309054390396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +196,6 @@ MonoBehaviour:
   isGround: 1
   key: 0
   state: 
-  HP: 0
 --- !u!212 &212896998876372286
 SpriteRenderer:
   m_ObjectHideFlags: 1
