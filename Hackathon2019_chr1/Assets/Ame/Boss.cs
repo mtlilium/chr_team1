@@ -13,8 +13,9 @@ public class Boss : MonoBehaviour
     public Transform jumpAttackJudgementBorder;
     bool isDead = false;
     public SpriteRenderer sprite;
+    public Collider2D collider;
 
-    public float direction;
+    public int direction;
     public float rayDistance = 1;
 
     public int score;
@@ -27,14 +28,15 @@ public class Boss : MonoBehaviour
     public float maxJumpInterval = 8;
     public float jumpPower = 8;
 
-
+    Coroutine flipAnimCoroutine;
+    Coroutine randomJumpCoroutine;
     private void Awake()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         r2d = GetComponent<Rigidbody2D>();
-        StartCoroutine(FlipAnimation());
+        flipAnimCoroutine = StartCoroutine(FlipAnimation());
         direction = -1;
-        StartCoroutine(RandomJump());
+        randomJumpCoroutine = StartCoroutine(randomMovement());
 
     }
 
@@ -90,6 +92,7 @@ public class Boss : MonoBehaviour
         }
     }
 
+
     void Move()
     {
         if (r2d.velocity.x < maxSpeed)
@@ -106,12 +109,15 @@ public class Boss : MonoBehaviour
 
     }
 
-    IEnumerator RandomJump()
+    IEnumerator randomMovement()
     {
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minJumpInterval, maxJumpInterval));
             r2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(Random.Range(3, 8));
+            int sign = Random.Range(0, 1) < 0.5f ? direction : -direction;
+            r2d.AddForce(Vector2.right * sign * 3, ForceMode2D.Impulse);
         }
     }
 
@@ -123,7 +129,16 @@ public class Boss : MonoBehaviour
         isDead = true;
         this.player.Add_Score(score);
         //アニメーションとか死亡処理とか入れる
-        Destroy(gameObject);
+        collider.enabled = false;
+        r2d.constraints = RigidbodyConstraints2D.None;
+
+        StopCoroutine(randomJumpCoroutine);
+        StopCoroutine(flipAnimCoroutine);
+        var rot = sprite.transform.rotation.eulerAngles;
+        rot.z = -90;
+        sprite.transform.eulerAngles = rot;
+
+        Destroy(gameObject, 10);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -140,7 +155,6 @@ public class Boss : MonoBehaviour
             if (player.transform.position.y > jumpAttackJudgementBorder.position.y)
             {
                 TakeDamage();
-
             }
             //そのまま当たった時
             //プレイヤー倒す
@@ -162,7 +176,7 @@ public class Boss : MonoBehaviour
             Kill();
         }
         //r2d.AddForce(Vector2.right, ForceMode2D.Impulse);
-        r2d.AddForce(new Vector2(100, 10), ForceMode2D.Impulse);
+        r2d.AddForce(new Vector2(100, 5), ForceMode2D.Impulse);
         print("owari");
         //StartCoroutine(InvincibleTime());
     }
