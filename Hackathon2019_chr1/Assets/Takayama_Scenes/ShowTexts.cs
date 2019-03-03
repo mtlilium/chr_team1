@@ -8,6 +8,9 @@ using System;
 public class ShowTexts : MonoBehaviour {
 	
 	Player player;
+	Text hpText;
+	Text scoreText;
+
 
 	// Use this for initialization
 	void Start () {
