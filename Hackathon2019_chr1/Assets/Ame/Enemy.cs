@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+	//プレイヤーを取得
+	Player player;
+
     public float acceleration = 5;
     public float maxSpeed = 5;
     Rigidbody2D r2d;
@@ -14,8 +17,11 @@ public class Enemy : MonoBehaviour
     public float direction;
     public float rayDistance = 1;
 
+	public int score;
+
     private void Awake()
     {
+		player = GameObject.Find ("Player").GetComponent<Player> ();
         r2d = GetComponent<Rigidbody2D>();
         StartCoroutine(FlipAnimation());
         direction = -1;
@@ -23,11 +29,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        //debug用
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Kill();
-        }
 
         var hits = Physics2D.RaycastAll(transform.position, new Vector2(direction, 0), distance: rayDistance);
         Debug.DrawRay(transform.position, new Vector2(direction, 0) * rayDistance, Color.red);
@@ -105,6 +106,7 @@ public class Enemy : MonoBehaviour
             if (player.transform.position.y > jumpAttackJudgementBorder.position.y)
             {
                 Kill();
+				this.player.Add_Score (score);
             }
             //そのまま当たった時
             //プレイヤー倒す

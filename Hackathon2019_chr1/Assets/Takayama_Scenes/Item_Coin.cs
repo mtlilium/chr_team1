@@ -12,6 +12,7 @@ public class Item_Coin : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find("Player").GetComponent<Player> ();
+		Debug.Log (player == null ? "miria" : "OK");
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,7 @@ public class Item_Coin : MonoBehaviour {
 		print ("入ったよ");
 		if (col.gameObject.tag == "Player") {
 			player.Heal_HP (5);
-			player.Add_Score (5000);
+			player.Add_Score (500);
 			Destroy (this.gameObject);
 		}
 	}
