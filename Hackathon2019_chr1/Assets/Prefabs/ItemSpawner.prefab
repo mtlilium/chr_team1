@@ -52,3 +52,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 1819900185949784, guid: df41b79e1775c3347ac059bb9abb55d3, type: 2}
+  redCoinPrefab: {fileID: 1159523345892812, guid: 24f4f37202815384abe55bd024367e2e,
+    type: 2}
+  yuriPrefab: {fileID: 1247572737879356, guid: 53c8bd449ba864a45878fa7f7c7d6b32, type: 2}

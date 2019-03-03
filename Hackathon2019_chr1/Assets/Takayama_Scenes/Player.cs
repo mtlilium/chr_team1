@@ -19,7 +19,7 @@ public class Player : MonoBehaviour {
 	string prevState;            // 前の状態を保存
 	float stateEffect = 1;       // 状態に応じて横移動速度を変えるための係数
 
-	private float HP; //モチベ。
+	public float HP; //モチベ。
 	private int score; //スコア
 	private GameObject image;
 
@@ -33,6 +33,9 @@ public class Player : MonoBehaviour {
 		HP = 100; //初期化
 		score = 0;
 		image = GameObject.Find("ImagePlayer");
+		this.transform.position = new Vector2 (0, 0);
+		RaycastHit2D hit = Physics2D.Raycast (transform.position, -Vector2.up);
+		this.transform.position = hit.point;
 	}
 	
 	// Update is called once per frame
@@ -110,7 +113,7 @@ public class Player : MonoBehaviour {
 		HP -= 0.1f;
 		if (HP <= 0) {
 			HP = 0;
-			Destroy (this.gameObject);
+			//Destroy (this.gameObject);
 		}
 	}
 
@@ -132,22 +135,22 @@ public class Player : MonoBehaviour {
 	}
 	//着地判定
 	void OnCollisionEnter2D(Collision2D col){
-		print ("入ったよ");
+		//print ("入ったよ");
 		if (col.gameObject.tag == "Ground") {
 			if (!isGround)
-				Debug.Log (isGround + "Akagi");
+				//Debug.Log (isGround + "Akagi");
 				isGround = true;
 		}
 
 		//敵衝突判定
 		if (col.gameObject.tag == "Enemy") {
-			HP -= 5; //col.gameObject.damage
+			HP -= 25; //col.gameObject.damage
 		}
 	}
 	void OnCollisionStay2D(Collision2D col){
-		print ("みりあ入ったよ");
+		//print ("みりあ入ったよ");
 		if (col.gameObject.tag == "Ground") {
-			Debug.Log (isGround + "Miria");
+			//Debug.Log (isGround + "Miria");
 			if(!isGround)
 				isGround = true;
 		}
