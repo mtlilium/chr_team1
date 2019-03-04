@@ -25,6 +25,8 @@ public class Player : MonoBehaviour {
 
 	Rigidbody2D rb2;
 
+	GameSceneManager gcm;
+
 	// Use this for initialization
 	void Start () {
 		isGround = true;        // 地面と接地しているか管理するフラグ
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour {
 		this.transform.position = new Vector2 (0, 0);
 		RaycastHit2D hit = Physics2D.Raycast (transform.position, -Vector2.up);
 		this.transform.position = hit.point;
+
+		gcm = GameObject.Find ("GameSceneManager").GetComponent<GameSceneManager> ();
 	}
 	
 	// Update is called once per frame
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour {
 		ChangeState ();          //  状態を変更する
 		Move ();                 //  入力に応じて移動する
 		HP_Manage(); //HP制御
+
 	}
 
 	private void GetInputKey(){
@@ -155,7 +160,7 @@ public class Player : MonoBehaviour {
 		//敵衝突判定
 		if (col.gameObject.tag == "Enemy") {
 			AudioManager.Instance.PlaySE ("WHAT");
-			HP -= 20; //col.gameObject.damage
+			HP -= 5; //col.gameObject.damage
 			if(HP<=0) HP = 0;
 		}
 	}
@@ -168,6 +173,14 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D col){
+		//ゴール判定
+		if (col.gameObject.tag == "Goal") {
+			print ("GoalMiria");
+			AudioManager.Instance.PlaySE ("GOAL");
+			GameSceneManager.isClear = true;
+		}
+	}
 	//終了時に操作不能にする
 	public void toCantMove(){
 		this.enabled = false;

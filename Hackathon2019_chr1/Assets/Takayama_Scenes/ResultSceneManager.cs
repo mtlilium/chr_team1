@@ -132,7 +132,7 @@ public class ResultSceneManager : MonoBehaviour {
 
 	public void RestartButtonClicked(){
 		AudioManager.Instance.AttachBGMSource.Stop ();
-		SceneManager.LoadScene("GameScene_kari");
+		SceneManager.LoadScene("Stage");
 	}
 	public void TitleButtonClicked(){
 		Destroy (AudioManager.Instance.gameObject);

@@ -29,7 +29,7 @@ public class GameSceneManager : MonoBehaviour {
 
 	//Slider
 	Slider hpSlider;
-	Slider scoreSlider;
+	Slider timeSlider;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +46,7 @@ public class GameSceneManager : MonoBehaviour {
 		gameOverPic.SetActive (false);
 
 		hpSlider = GameObject.Find ("HPSlider").GetComponent<Slider> ();
+		timeSlider = GameObject.Find ("TimeSlider").GetComponent<Slider> ();
 
 		timeLimit = 121.0f; //時間制限初期化
 		isClear = false;
@@ -75,6 +76,12 @@ public class GameSceneManager : MonoBehaviour {
 		if (isClear) {
 			GameClear ();
 		}
+		print ("iketa?" + isClear);
+
+		if (player.transform.position.y <= -15) {
+			isGameOver = true;
+			player.transform.position = new Vector2 (player.transform.position.x, -15f);
+		}
 	}
 
 	private void ShowHP(){
@@ -89,17 +96,20 @@ public class GameSceneManager : MonoBehaviour {
 	}
 
 	private void ShowScore(){
-		scoreText.text = "Score = " + player.GetScore ().ToString ();
+		scoreText.text = "Score : " + player.GetScore ().ToString ();
 
 		//debug you
-		if (player.GetScore () >= 10000 && !isClear) {
+		/*if (player.GetScore () >= 10000 && !isClear) {
 			print ("a");
 			isClear = true;
-		}
+		}*/
 	}
 
 	private void ShowTime(){
-		timeText.text = "TimeLimit = " + ((int)(timeLimit/60)).ToString () + " : " + ((int)(timeLimit%60)).ToString ();
+		if (!isClear && !isGameOver) {
+			timeSlider.value = timeLimit / 120f;
+		}
+		timeText.text = "タイムリミット 残り " + ((int)(timeLimit/60)).ToString () + " : " + ((int)(timeLimit%60)).ToString ();
 
 		if (timeLimit <= 0 && !isGameOver) {
 			isGameOver = true;
@@ -109,6 +119,9 @@ public class GameSceneManager : MonoBehaviour {
 	//時間延長
 	public void AddTime(int add){
 		timeLimit += add;
+		if (timeLimit >= 120f) {
+			timeLimit = 120f;
+		}
 	}
 
 	//音は一回のみ

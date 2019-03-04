@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpAttackJudgementBorder: {fileID: 4653776431566160}
-  score: 0
+  score: 5000
 --- !u!114 &114827563484292834
 MonoBehaviour:
   m_ObjectHideFlags: 1
