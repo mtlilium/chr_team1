@@ -178,9 +178,10 @@ MonoBehaviour:
   maxSpeed: 4
   jumpAttackJudgementBorder: {fileID: 4484856989742646}
   sprite: {fileID: 212909054053862692}
+  collider: {fileID: 0}
   direction: -1
   rayDistance: 1
-  score: 0
+  score: 10000
   maxDamageForDeath: 8
   minJumpInterval: 4
   maxJumpInterval: 8

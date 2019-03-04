@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
             foreach (var hit in hits)
             {
                 //print(hit.collider.name);
-                if (hit.collider.tag == "Ground")
+				if (hit.collider.tag == "Ground")
                 {
                     var rot = transform.rotation.eulerAngles;
                     rot.y += 180;
