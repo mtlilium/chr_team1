@@ -33,6 +33,6 @@ public class TitleSceneManager : MonoBehaviour {
 	}
 	public void StartButtonClicked(){
 		AudioManager.Instance.AttachBGMSource.Stop ();
-		SceneManager.LoadScene("GameScene_kari");
+		SceneManager.LoadScene("Stage");
 	}
 }
