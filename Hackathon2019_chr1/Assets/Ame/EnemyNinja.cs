@@ -6,6 +6,7 @@ public class EnemyNinja : MonoBehaviour
 {
     public float torque;
 
+
     Rigidbody2D r2d;
 
     private void Awake()
