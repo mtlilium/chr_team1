@@ -12,6 +12,7 @@ public class EnemyParipi : MonoBehaviour
     public Transform jumpAttackJudgementBorder;
     bool isDead = false;
 
+	private bool isBarked;
 
 
     public int score;
@@ -20,8 +21,16 @@ public class EnemyParipi : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         r2d = GetComponent<Rigidbody2D>();
+		isBarked = false;
     }
 
+	private void Update(){
+		//1回パリピと吠える
+		if (!isBarked && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= 20) {
+			AudioManager.Instance.PlaySE ("PARIPI");
+			isBarked = true;
+		}
+	}
 
     public void Kill()
     {

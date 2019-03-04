@@ -19,12 +19,15 @@ public class Enemy : MonoBehaviour
 
 	public int score;
 
+	private bool isBarked;
+
     private void Awake()
     {
 		player = GameObject.Find ("Player").GetComponent<Player> ();
         r2d = GetComponent<Rigidbody2D>();
         StartCoroutine(FlipAnimation());
         direction = -1;
+		isBarked = false;
     }
 
     private void Update()
@@ -48,6 +51,12 @@ public class Enemy : MonoBehaviour
             //print(hit2d.collider.tag);
             //print(hit2d.collider.name);
         }
+
+		//1回パリピと吠える
+		if (!isBarked && Mathf.Abs (player.transform.position.x - this.transform.position.x) <= 20) {
+			AudioManager.Instance.PlaySE ("PARIPI");
+			isBarked = true;
+		}
     }
 
     private void FixedUpdate()

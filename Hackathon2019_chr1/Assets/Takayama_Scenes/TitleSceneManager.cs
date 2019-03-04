@@ -24,15 +24,27 @@ public class TitleSceneManager : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Escape)) {
 			Application.Quit();
 		}
+
+		if (Input.anyKey && !Input.GetKey (KeyCode.Escape)) {
+			ArasujiButtonClicked ();
+		}
 	}
 
 	public void ArasujiButtonClicked(){
 		if (!arasuji.activeSelf) {
+			AudioManager.Instance.PlaySE ("SELECT");
 			arasuji.SetActive (true);
 		}
 	}
 	public void StartButtonClicked(){
 		AudioManager.Instance.AttachBGMSource.Stop ();
+		AudioManager.Instance.PlaySE ("TITLECALL");
+		StartCoroutine ("GoToGameScene");
+	}
+
+	IEnumerator GoToGameScene(){
+		yield return new WaitForSeconds(2.4f);
+	
 		SceneManager.LoadScene("Stage");
 	}
 }
