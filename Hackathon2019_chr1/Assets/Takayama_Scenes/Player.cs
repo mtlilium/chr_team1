@@ -93,7 +93,7 @@ public class Player : MonoBehaviour {
 		if (isGround) {
 			if (Input.GetKeyDown (KeyCode.Space)) {
 				//ジャンプ音
-				//AudioManager.Instance.PlaySE("UEI");
+				AudioManager.Instance.PlaySE("UEI");
 				//ジャンプするのは疲れるので
 				HP -= 3.0f;
 				rb2.AddForce (transform.up * this.jumpForce);
@@ -154,7 +154,9 @@ public class Player : MonoBehaviour {
 
 		//敵衝突判定
 		if (col.gameObject.tag == "Enemy") {
-			HP -= 25; //col.gameObject.damage
+			AudioManager.Instance.PlaySE ("WHAT");
+			HP -= 20; //col.gameObject.damage
+			if(HP<=0) HP = 0;
 		}
 	}
 	void OnCollisionStay2D(Collision2D col){
@@ -164,5 +166,11 @@ public class Player : MonoBehaviour {
 			if(!isGround)
 				isGround = true;
 		}
+	}
+
+	//終了時に操作不能にする
+	public void toCantMove(){
+		this.enabled = false;
+		//rb2.isKinematic = true;
 	}
 }
