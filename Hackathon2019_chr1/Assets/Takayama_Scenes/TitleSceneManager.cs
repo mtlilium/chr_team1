@@ -44,6 +44,7 @@ public class TitleSceneManager : MonoBehaviour {
 
 	IEnumerator GoToGameScene(){
 		yield return new WaitForSeconds(2.4f);
-		SceneManager.LoadScene("GameScene_kari");
+	
+		SceneManager.LoadScene("Stage");
 	}
 }
