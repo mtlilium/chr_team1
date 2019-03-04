@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 	public int score;
 
 	private bool isBarked;
+    public Vector3 rayOffset;
 
     private void Awake()
     {
@@ -32,9 +33,9 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-
-        var hits = Physics2D.RaycastAll(transform.position, new Vector2(direction, 0), distance: rayDistance);
-        Debug.DrawRay(transform.position, new Vector2(direction, 0) * rayDistance, Color.red);
+        var pos = transform.position;
+        var hits = Physics2D.RaycastAll(pos+rayOffset, new Vector2(direction, 0), distance: rayDistance);
+        Debug.DrawRay(pos+rayOffset, new Vector2(direction, 0) * rayDistance, Color.red);
         if (hits.Length != 0)
         {
             foreach (var hit in hits)
